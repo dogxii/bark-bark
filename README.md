@@ -14,7 +14,7 @@ bb push 'hello from bark-bark'
 bb push 'hello' --title 'Dogxi' --icon 'https://weavatar.com/avatar/554b1d16bf407ccaedc51d762eeb8cd2.jpg'
 ```
 
-![Bark notification screenshot](./assets/screenshot.webp)
+![Bark notification screenshot](https://i.imgur.com/Y9AuXdd.jpeg)
 
 ## Install
 

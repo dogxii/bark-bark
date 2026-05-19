@@ -14,7 +14,7 @@ bb push 'hello from bark-bark'
 bb push 'hello' --title 'Dogxi' --icon 'https://weavatar.com/avatar/554b1d16bf407ccaedc51d762eeb8cd2.jpg'
 ```
 
-![Bark 通知截图](./assets/screenshot.webp)
+![Bark 通知截图](https://i.imgur.com/Y9AuXdd.jpeg)
 
 它没有运行时依赖，适合直接通过 `npx`、`bunx` 或全局安装使用。
 
