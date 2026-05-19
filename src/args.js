@@ -27,6 +27,7 @@ const BOOLEAN_OPTIONS = new Set([
   'archive',
   'copy',
   'dry-run',
+  'force',
   'help',
   'json',
   'stdin',

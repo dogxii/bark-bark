@@ -63,6 +63,8 @@ bb config set group cli
 bb config unset title
 ```
 
+Use `--force` to overwrite an existing value.
+
 Show the config path:
 
 ```sh

@@ -47,6 +47,65 @@ test('uses configured push defaults', async () => {
   }
 });
 
+test('protects config values from accidental overwrite', async () => {
+  const dir = await mkdtemp(path.join(os.tmpdir(), 'bb-cli-'));
+  const env = { BB_CONFIG: path.join(dir, 'config.json') };
+
+  try {
+    await run(['config', 'set', 'title', 'Dogxi'], mockIo(env));
+
+    await assert.rejects(
+      () => run(['config', 'set', 'title', 'Other'], mockIo(env)),
+      /already set/
+    );
+
+    const io = mockIo(env);
+    await run(['config', 'set', 'title', 'Other', '--force'], io);
+    assert.match(io.stdout.text, /saved title/);
+
+    const get = mockIo(env);
+    await run(['config', 'get', 'title'], get);
+    assert.equal(get.stdout.text, 'Other\n');
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test('reports unchanged config values without writing', async () => {
+  const dir = await mkdtemp(path.join(os.tmpdir(), 'bb-cli-'));
+  const env = { BB_CONFIG: path.join(dir, 'config.json') };
+
+  try {
+    await run(['config', 'set', 'title', 'Dogxi'], mockIo(env));
+
+    const io = mockIo(env);
+    await run(['config', 'set', 'title', 'Dogxi'], io);
+    assert.equal(io.stdout.text, 'title unchanged\n');
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test('protects init values from accidental overwrite', async () => {
+  const dir = await mkdtemp(path.join(os.tmpdir(), 'bb-cli-'));
+  const env = { BB_CONFIG: path.join(dir, 'config.json') };
+
+  try {
+    await run(['init', 'first-key'], mockIo(env));
+
+    await assert.rejects(
+      () => run(['init', 'second-key'], mockIo(env)),
+      /key is already set/
+    );
+
+    const io = mockIo(env);
+    await run(['init', 'second-key', '--force'], io);
+    assert.match(io.stdout.text, /initialized/);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
 test('unsets configured defaults', async () => {
   const dir = await mkdtemp(path.join(os.tmpdir(), 'bb-cli-'));
   const env = { BB_CONFIG: path.join(dir, 'config.json') };

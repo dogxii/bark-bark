@@ -15,12 +15,13 @@ test('parses push command with body and options', () => {
 });
 
 test('parses equals options and booleans', () => {
-  const parsed = parseArgv(['push', '--title=Hi', '--dry-run', '--json=false', 'body']);
+  const parsed = parseArgv(['push', '--title=Hi', '--dry-run', '--force', '--json=false', 'body']);
 
   assert.equal(parsed.command, 'push');
   assert.deepEqual(parsed.positional, ['body']);
   assert.equal(parsed.options.title, 'Hi');
   assert.equal(parsed.options['dry-run'], true);
+  assert.equal(parsed.options.force, true);
   assert.equal(parsed.options.json, false);
 });
 

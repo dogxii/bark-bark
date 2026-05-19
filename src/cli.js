@@ -120,6 +120,13 @@ async function configCommand(parsed, io) {
         throw new Error('config set requires a value');
       }
 
+      const change = prepareConfigSet(config, key, value, parsed.options);
+
+      if (!change.changed) {
+        write(io.stdout, `${key} unchanged\n`);
+        return 0;
+      }
+
       const next = setConfigValue(config, key, value);
       const file = await saveConfig(next, env);
       write(io.stdout, `saved ${key} to ${file}\n`);
@@ -144,14 +151,17 @@ async function initCommand(parsed, io) {
   const key = parsed.options.key || parsed.positional[0];
 
   if (parsed.options.server) {
+    prepareConfigSet(next, 'server', parsed.options.server, parsed.options);
     next = setConfigValue(next, 'server', parsed.options.server);
   }
 
   if (key) {
+    prepareConfigSet(next, 'key', key, parsed.options);
     next = setConfigValue(next, 'key', key);
   }
 
   if (parsed.options.group) {
+    prepareConfigSet(next, 'group', parsed.options.group, parsed.options);
     next = setConfigValue(next, 'group', parsed.options.group);
   }
 
@@ -199,6 +209,21 @@ function pickPushOptions(options) {
     title: options.title,
     url: options.url
   });
+}
+
+function prepareConfigSet(config, key, value, options) {
+  const current = getConfigValue(config, key);
+  const next = String(value);
+
+  if (current === next) {
+    return { changed: false };
+  }
+
+  if (current && !options.force) {
+    throw new Error(`${key} is already set. Use --force to overwrite.`);
+  }
+
+  return { changed: true };
 }
 
 function cleanObject(value) {
@@ -289,6 +314,7 @@ Examples:
 
 Global options:
   --config <path>  Use a custom config file
+  --force          Overwrite existing config values
   -h, --help       Show help
   -v, --version    Show version
 

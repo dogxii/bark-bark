@@ -65,6 +65,8 @@ bb config set group cli
 bb config unset title
 ```
 
+覆盖已有值时加 `--force`。
+
 查看配置文件路径：
 
 ```sh
