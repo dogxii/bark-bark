@@ -2,7 +2,7 @@
 
 中文 | [English](./README.md)
 
-`bark-bark` 是一个用于发送 [Bark](https://github.com/Finb/Bark) 通知的轻量命令行工具。
+一个用于发送 [Bark](https://github.com/Finb/Bark) 通知的轻量命令行工具。
 
 ## 快速开始
 

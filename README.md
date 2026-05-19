@@ -2,7 +2,7 @@
 
 [中文](./README.zh.md) | 英文
 
-`bark-bark` is a tiny zero-dependency CLI for sending [Bark](https://github.com/Finb/Bark) notifications.
+A tiny zero-dependency CLI for sending [Bark](https://github.com/Finb/Bark) notifications.
 
 ## Quick Start
 
