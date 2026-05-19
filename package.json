@@ -1,6 +1,6 @@
 {
   "name": "bark-bark",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A tiny portable CLI for Bark notifications.",
   "author": "Dogxi <hi@dogxi.me>",
   "type": "module",
