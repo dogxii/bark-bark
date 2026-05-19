@@ -1,13 +1,13 @@
 ---
 name: bark-bark
-description: Use when an AI agent needs to send Bark notifications with the bark-bark CLI (`bb`), configure or diagnose bark-bark usage, document bark-bark commands, or maintain the bark-bark repository while preserving its zero-dependency, simple, portable design.
+description: Use when an AI agent needs to send Bark notifications with the bark-bark CLI (`bb`), configure bark-bark, diagnose Bark push errors, or document concise bark-bark command examples.
 ---
 
 # Bark Bark
 
 ## Core Rule
 
-Keep bark-bark simple: prefer one clear `bb` command, no new dependencies unless unavoidable, and small portable behavior that works in scripts, CI, npx, and bunx.
+Prefer the shortest clear `bb` command. Use `npx bark-bark` only when `bb` is not installed.
 
 ## Send Notifications
 
@@ -45,7 +45,7 @@ bb config list
 bb config path
 ```
 
-Environment overrides are best for CI:
+Environment overrides are useful in CI:
 
 ```sh
 BARK_KEY=<bark-key> bb push 'deploy done'
@@ -62,13 +62,3 @@ BARK_SERVER=https://api.day.app bb push 'deploy done'
 ```sh
 bb push 'hello' --icon 'https://example.com/avatar.jpg?s=80&d=identicon'
 ```
-
-## Repository Maintenance
-
-When editing the bark-bark repo:
-
-1. Keep changes narrow and dependency-free.
-2. Add focused tests for CLI/config/client behavior.
-3. Run `npm test` and `npm publish --dry-run` before release work.
-4. Keep README examples short and practical.
-5. Avoid adding screenshots or generated assets to the npm package unless explicitly requested.
