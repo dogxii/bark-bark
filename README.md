@@ -4,7 +4,7 @@
 
 `bark-bark` is a tiny zero-dependency CLI for sending [Bark](https://github.com/Finb/Bark) notifications.
 
-The command name is `bb`:
+## Quick Start
 
 ```sh
 bb push 'hello from bark-bark'

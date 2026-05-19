@@ -4,7 +4,7 @@
 
 `bark-bark` 是一个用于发送 [Bark](https://github.com/Finb/Bark) 通知的轻量命令行工具。
 
-命令名是 `bb`：
+## 快速开始
 
 ```sh
 bb push 'hello from bark-bark'
