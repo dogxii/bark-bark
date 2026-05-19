@@ -1,6 +1,6 @@
 # bark-bark
 
-中文 | [English](./README.md)
+中文 | [英语](./README.md)
 
 一个用于发送 [Bark](https://github.com/Finb/Bark) 通知的轻量命令行工具。
 

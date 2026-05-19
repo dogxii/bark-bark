@@ -1,6 +1,6 @@
 # bark-bark
 
-[中文](./README.zh.md) | 英文
+[中文](./README.zh.md) | English
 
 A tiny zero-dependency CLI for sending [Bark](https://github.com/Finb/Bark) notifications.
 
