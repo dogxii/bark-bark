@@ -1,0 +1,32 @@
+{
+  "name": "bark-bark",
+  "version": "0.1.0",
+  "description": "A tiny portable CLI for Bark notifications.",
+  "author": "Dogxi <hi@dogxi.me>",
+  "type": "module",
+  "bin": {
+    "bb": "bin/bb.js",
+    "bark-bark": "bin/bb.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "start": "node ./bin/bb.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "bark",
+    "notification",
+    "cli",
+    "push"
+  ],
+  "license": "MIT"
+}
