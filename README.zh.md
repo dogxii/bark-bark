@@ -62,16 +62,14 @@ bb config path
 BB_CONFIG=/path/to/config.json bb push 'hello'
 ```
 
-这里要使用 Bark App 里测试 URL 的 push key。比如 App 里显示：
+使用 Bark App 测试 URL 中间这一段作为 key：
 
 ```text
-https://api.day.app/your_key/hello
+https://api.day.app/CVGw837*******2ULrEyEh/Body
 ```
 
-那就配置 `your_key`：
-
 ```sh
-bb config set key your_key
+bb config set key <bark-key>
 ```
 
 不要在这里填原始 APNs device token。当前 CLI 走的是 Bark Server 模式，服务端必须能在数据库里找到这个 push key。

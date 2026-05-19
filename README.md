@@ -60,16 +60,14 @@ You can override it with:
 BB_CONFIG=/path/to/config.json bb push 'hello'
 ```
 
-Use the Bark push key from the test URL shown in the Bark app. For example, if the app shows:
+Use the middle part of the Bark app test URL as the key:
 
 ```text
-https://api.day.app/your_key/hello
+https://api.day.app/CVGw837*******2ULrEyEh/Body
 ```
 
-configure `your_key`:
-
 ```sh
-bb config set key your_key
+bb config set key <bark-key>
 ```
 
 Do not use the raw APNs device token here. This CLI uses Bark Server mode, so the server must already know the push key.
