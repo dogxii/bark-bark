@@ -10,7 +10,8 @@ const CONFIG_KEYS = new Set([
   'key',
   'level',
   'server',
-  'sound'
+  'sound',
+  'title'
 ]);
 
 export function defaultConfig() {
@@ -106,6 +107,24 @@ export function setConfigValue(config, key, value) {
   return normalizeConfig(next);
 }
 
+export function unsetConfigValue(config, key) {
+  if (!CONFIG_KEYS.has(key)) {
+    throw new Error(`unknown config key "${key}"`);
+  }
+
+  const next = cloneConfig(config);
+
+  if (key === 'server') {
+    next.server = DEFAULT_SERVER;
+  } else if (key === 'key') {
+    next.key = '';
+  } else {
+    delete next.defaults[key];
+  }
+
+  return normalizeConfig(next);
+}
+
 export function getConfigValue(config, key) {
   if (!CONFIG_KEYS.has(key)) {
     throw new Error(`unknown config key "${key}"`);
@@ -153,7 +172,7 @@ function normalizeDefaults(value) {
 
   const defaults = {};
 
-  for (const key of ['group', 'icon', 'level', 'sound']) {
+  for (const key of ['group', 'icon', 'level', 'sound', 'title']) {
     if (value[key] !== undefined && value[key] !== '') {
       defaults[key] = String(value[key]);
     }

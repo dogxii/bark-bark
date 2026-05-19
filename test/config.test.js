@@ -11,7 +11,8 @@ import {
   getConfigValue,
   loadConfig,
   saveConfig,
-  setConfigValue
+  setConfigValue,
+  unsetConfigValue
 } from '../src/config.js';
 
 test('uses BB_CONFIG as explicit config path', () => {
@@ -32,6 +33,14 @@ test('saves and loads config', async () => {
   } finally {
     await rm(dir, { recursive: true, force: true });
   }
+});
+
+test('sets and unsets default config values', () => {
+  const config = setConfigValue(defaultConfig(), 'title', 'Dogxi');
+  const next = unsetConfigValue(config, 'title');
+
+  assert.equal(getConfigValue(config, 'title'), 'Dogxi');
+  assert.equal(getConfigValue(next, 'title'), '');
 });
 
 test('applies environment overrides', () => {

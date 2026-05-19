@@ -6,7 +6,8 @@ import {
   loadConfig,
   publicConfig,
   saveConfig,
-  setConfigValue
+  setConfigValue,
+  unsetConfigValue
 } from './config.js';
 import { pingServer, pushNotification } from './client.js';
 
@@ -124,6 +125,13 @@ async function configCommand(parsed, io) {
       write(io.stdout, `saved ${key} to ${file}\n`);
       return 0;
     }
+    case 'unset': {
+      requireArg(key, 'config unset <key>');
+      const next = unsetConfigValue(config, key);
+      const file = await saveConfig(next, env);
+      write(io.stdout, `unset ${key} in ${file}\n`);
+      return 0;
+    }
     default:
       throw new Error(`unknown config command "${subcommand}"`);
   }
@@ -158,6 +166,11 @@ async function initCommand(parsed, io) {
 }
 
 async function resolveBody(parsed, io) {
+  if (parsed.positional.length === 1 && parsed.positional[0] === '-') {
+    const input = await readStdin(io.stdin);
+    return input.trim();
+  }
+
   const positionalBody = parsed.positional.join(' ').trim();
 
   if (positionalBody) {
@@ -173,7 +186,7 @@ async function resolveBody(parsed, io) {
 }
 
 function pickPushOptions(options) {
-  return {
+  return cleanObject({
     archive: options.archive,
     badge: options.badge,
     copy: options.copy,
@@ -185,7 +198,13 @@ function pickPushOptions(options) {
     timeout: options.timeout,
     title: options.title,
     url: options.url
-  };
+  });
+}
+
+function cleanObject(value) {
+  return Object.fromEntries(
+    Object.entries(value).filter(([, item]) => item !== undefined)
+  );
 }
 
 function parsedEnv(env, options) {
@@ -257,7 +276,7 @@ function helpText() {
 
 Usage:
   bb push <body> [options]
-  bb config <list|get|set|path>
+  bb config <list|get|set|unset|path>
   bb init [key] [--server <url>]
   bb ping
 
@@ -265,6 +284,7 @@ Examples:
   bb init <your-bark-key>
   bb push 'hello from bark-bark'
   bb push 'deploy done' --title Deploy --group ci
+  echo 'stdin message' | bb push -
   echo 'stdin message' | bb push --stdin
 
 Global options:

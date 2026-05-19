@@ -52,7 +52,9 @@ Or set values one by one:
 ```sh
 bb config set key <your-bark-key>
 bb config set server https://api.day.app
+bb config set title Dogxi
 bb config set group cli
+bb config unset title
 ```
 
 Show the config path:
@@ -93,6 +95,7 @@ bb push 'deploy done' --title Deploy --group ci
 bb push 'open dashboard' --url https://example.com
 bb push 'server warning' --level timeSensitive
 bb push 'with icon' --icon 'https://example.com/avatar.png'
+echo 'message from stdin' | bb push -
 echo 'message from stdin' | bb push --stdin
 bb ping
 ```

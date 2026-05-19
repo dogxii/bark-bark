@@ -54,7 +54,9 @@ bb init <your-bark-key>
 ```sh
 bb config set key <your-bark-key>
 bb config set server https://api.day.app
+bb config set title Dogxi
 bb config set group cli
+bb config unset title
 ```
 
 查看配置文件路径：
@@ -95,6 +97,7 @@ bb push '发布成功' --title Deploy --group ci
 bb push '打开控制台' --url https://example.com
 bb push '服务器告警' --level timeSensitive
 bb push '带图标的通知' --icon 'https://example.com/avatar.png'
+echo '来自 stdin 的消息' | bb push -
 echo '来自 stdin 的消息' | bb push --stdin
 bb ping
 ```

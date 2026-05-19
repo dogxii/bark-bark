@@ -1,4 +1,5 @@
 const KNOWN_LEVELS = new Set(['active', 'timeSensitive', 'passive', 'critical']);
+const USER_AGENT = 'bark-bark';
 
 export function createPushPayload(options) {
   const body = String(options.body || '').trim();
@@ -68,7 +69,7 @@ export async function pushNotification(options) {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-      'user-agent': 'bark-bark/0.1'
+      'user-agent': USER_AGENT
     },
     body: JSON.stringify(payload)
   }, options.timeout);
@@ -107,7 +108,7 @@ export async function pingServer(options) {
   const response = await fetchWithTimeout(endpoint, {
     method: 'GET',
     headers: {
-      'user-agent': 'bark-bark/0.1'
+      'user-agent': USER_AGENT
     }
   }, options.timeout);
 
