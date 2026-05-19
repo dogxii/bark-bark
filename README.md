@@ -1,14 +1,20 @@
 # bark-bark
 
-`bark-bark` is a tiny zero-dependency CLI for sending [Bark](https://github.com/Finb/Bark) notifications.
+[中文](./README.zh.md) | 英文
 
-[中文文档](./README.zh.md)
+`bark-bark` is a tiny zero-dependency CLI for sending [Bark](https://github.com/Finb/Bark) notifications.
 
 The command name is `bb`:
 
 ```sh
 bb push 'hello from bark-bark'
 ```
+
+```sh
+bb push 'hello' --title 'Dogxi' --icon 'https://weavatar.com/avatar/554b1d16bf407ccaedc51d762eeb8cd2.jpg'
+```
+
+![Bark notification screenshot](./assets/screenshot.webp)
 
 ## Install
 

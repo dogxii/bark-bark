@@ -9,6 +9,7 @@
     "bark-bark": "bin/bb.js"
   },
   "files": [
+    "assets",
     "bin",
     "src",
     "README.md",

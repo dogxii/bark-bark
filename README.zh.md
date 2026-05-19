@@ -1,14 +1,20 @@
 # bark-bark
 
-`bark-bark` 是一个用于发送 [Bark](https://github.com/Finb/Bark) 通知的轻量命令行工具。
+中文 | [English](./README.md)
 
-[English](./README.md)
+`bark-bark` 是一个用于发送 [Bark](https://github.com/Finb/Bark) 通知的轻量命令行工具。
 
 命令名是 `bb`：
 
 ```sh
 bb push 'hello from bark-bark'
 ```
+
+```sh
+bb push 'hello' --title 'Dogxi' --icon 'https://weavatar.com/avatar/554b1d16bf407ccaedc51d762eeb8cd2.jpg'
+```
+
+![Bark 通知截图](./assets/screenshot.webp)
 
 它没有运行时依赖，适合直接通过 `npx`、`bunx` 或全局安装使用。
 
