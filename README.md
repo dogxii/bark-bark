@@ -26,6 +26,13 @@ npm install -g bark-bark
 bb push 'hello'
 ```
 
+Verify the package without installing:
+
+```sh
+npx bark-bark --version
+npx bark-bark push 'hello' --key <bark-key>
+```
+
 ## Configure
 
 Initialize a config file:

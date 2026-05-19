@@ -1,6 +1,6 @@
 {
   "name": "bark-bark",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A tiny portable CLI for Bark notifications.",
   "author": "Dogxi <hi@dogxi.me>",
   "type": "module",
@@ -17,7 +17,8 @@
   ],
   "scripts": {
     "test": "node --test",
-    "start": "node ./bin/bb.js"
+    "start": "node ./bin/bb.js",
+    "prepublishOnly": "npm test"
   },
   "engines": {
     "node": ">=20"
@@ -28,5 +29,13 @@
     "cli",
     "push"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dogxii/bark-bark.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dogxii/bark-bark/issues"
+  },
+  "homepage": "https://github.com/dogxii/bark-bark#readme",
   "license": "MIT"
 }

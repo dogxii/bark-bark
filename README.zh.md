@@ -28,6 +28,13 @@ npm install -g bark-bark
 bb push 'hello'
 ```
 
+不安装验证：
+
+```sh
+npx bark-bark --version
+npx bark-bark push 'hello' --key <bark-key>
+```
+
 ## 配置
 
 初始化配置文件：
