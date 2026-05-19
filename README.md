@@ -1,6 +1,6 @@
 # bark-bark
 
-[中文](./README.zh.md) | English
+[中文文档](./README.zh.md) | English
 
 A tiny zero-dependency CLI for sending [Bark](https://github.com/Finb/Bark) notifications.
 
@@ -37,6 +37,12 @@ Verify the package without installing:
 ```sh
 npx bark-bark --version
 npx bark-bark push 'hello' --key <bark-key>
+```
+
+## Skill
+
+```sh
+npx skills add dogxii/bark-bark
 ```
 
 ## Configure

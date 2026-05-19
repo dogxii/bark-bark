@@ -1,6 +1,6 @@
 # bark-bark
 
-中文 | [英语](./README.md)
+中文 | [英语文档](./README.md)
 
 一个用于发送 [Bark](https://github.com/Finb/Bark) 通知的轻量命令行工具。
 
@@ -39,6 +39,12 @@ bb push 'hello'
 ```sh
 npx bark-bark --version
 npx bark-bark push 'hello' --key <bark-key>
+```
+
+## Skill
+
+```sh
+npx skills add dogxii/bark-bark
 ```
 
 ## 配置
